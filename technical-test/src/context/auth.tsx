@@ -3,6 +3,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { User } from "@/types/user.interface";
 
+// The type was defined in the same component file given its exclusive use.
 interface AuthContextType {
   user: User | null;
   token: string | null;
@@ -14,9 +15,11 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  // States
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(null);
 
+  // Effects
   useEffect(() => {
     // Recuperar de localStorage si ya estaba logueado
     const storedToken = localStorage.getItem("token");
@@ -28,6 +31,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   }, []);
 
+  // Handles
   const login = (userData: User, token: string) => {
     setUser(userData);
     setToken(token);
@@ -59,6 +63,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
 export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
-  if (!context) throw new Error("useAuth debe usarse dentro de <AuthProvider>");
+  if (!context) throw new Error("useAuth must be used within <AuthProvider>");
   return context;
 };

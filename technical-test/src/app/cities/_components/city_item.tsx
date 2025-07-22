@@ -3,12 +3,17 @@ import { City } from "@/types/city.interface";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import CallToActionButton from "@/components/call-to-action-button";
+
+// The type was defined in the same component file given its exclusive use.
 type props = {
   city: City;
   index: number;
 };
 const CityItem = ({ city, index }: props) => {
+  // Router
   const router = useRouter();
+
+  // Handles
   const handleClick = () => {
     router.push("/places/" + city.id);
   };

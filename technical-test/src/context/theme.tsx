@@ -3,6 +3,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 
+// The type was defined in the same component file given its exclusive use.
 type Theme = "light" | "dark";
 
 interface ThemeContextType {
@@ -13,8 +14,10 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  // Context
   const [theme, setTheme] = useState<Theme>("light");
 
+  // Effects
   useEffect(() => {
     const savedTheme = (localStorage.getItem("theme") as Theme) || "light";
     setTheme(savedTheme);
@@ -25,6 +28,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  // Handles
   const toggleTheme = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };

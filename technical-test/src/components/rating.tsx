@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Star } from "lucide-react";
 
+// The type was defined in the same component file given its exclusive use.
 type props = {
   value?: number;
   onChange?: (rating: number) => void;
@@ -16,11 +17,14 @@ const Rating = ({
   size = 24,
   className = "",
 }: props) => {
+  // States
   const [hoveredRating, setHoveredRating] = useState(0);
   const [selectedRating, setSelectedRating] = useState(value);
 
+  // Calculated variables
   const displayRating = readOnly ? value : hoveredRating || selectedRating;
 
+  // Handles
   const handleStarClick = (rating: number) => {
     if (readOnly) return;
     setSelectedRating(rating);
@@ -37,6 +41,7 @@ const Rating = ({
     setHoveredRating(0);
   };
 
+  // Inner component, recomended in the documentation
   const renderStar = (index: number) => {
     const starValue = index + 1;
     const isFilled = displayRating >= starValue;

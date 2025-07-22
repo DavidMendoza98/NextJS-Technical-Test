@@ -1,11 +1,12 @@
 "use client";
+
+// The type was defined in the same component file given its exclusive use.
 type Props = {
   size?: number;
   label?: string;
 };
 
-const Spinner = ({ size, label }: Props) => {
-  if (!size) size = 30;
+const Spinner = ({ size = 30, label }: Props) => {
   return (
     <div className="flex justify-center items-center gap-2 p-4 text-sky-500 dark:text-white">
       <div

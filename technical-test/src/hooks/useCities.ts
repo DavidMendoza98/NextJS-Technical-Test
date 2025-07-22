@@ -4,10 +4,12 @@ import { City } from '@/types/city.interface';
 import { toast } from 'sonner';
 
 export const useCities = () => {
+  // States
   const [cities, setCities] = useState<City[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string[]>([]);
 
+  // Effects
   useEffect(() => {
     const fetchCities = async () => {
       try {
@@ -23,7 +25,7 @@ export const useCities = () => {
     };
 
     fetchCities();
-  }, []); // Array vacío = solo se ejecuta una vez
+  }, []);
 
   return { cities, loading, error };
 };

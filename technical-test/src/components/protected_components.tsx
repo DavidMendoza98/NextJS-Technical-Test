@@ -6,9 +6,13 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 export const Protected = ({ children }: { children: React.ReactNode }) => {
+  // Context
   const { isAuthenticated } = useAuth();
+
+  // Router
   const router = useRouter();
 
+  // Effects
   useEffect(() => {
     if (!isAuthenticated) {
       toast.error("Acceso no permitido");

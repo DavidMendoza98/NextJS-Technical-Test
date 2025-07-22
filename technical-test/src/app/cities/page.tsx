@@ -4,7 +4,9 @@ import { useCities } from "@/hooks/useCities";
 import CityItem from "./_components/city_item";
 
 export default function Cities() {
+  // Custom Hooks for the get API data
   const { cities, loading } = useCities();
+
   if (loading) return <Spinner label="Obteniendo datos" />;
   return (
     <main className="flex flex-col gap-2 items-center justify-start my-5">

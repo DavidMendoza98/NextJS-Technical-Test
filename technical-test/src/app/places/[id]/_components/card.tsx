@@ -7,13 +7,18 @@ import Image from "next/image";
 import Rating from "@/components/rating";
 import { Heart } from "lucide-react";
 
+// The type was defined in the same component file given its exclusive use.
 type props = {
   place: Place;
   onRating: (rating: number, id_user: number, id_place: number) => void;
   onLiking: (id_user: number, id_place: number) => void;
 };
+
 const PlaceCard = ({ place, onRating, onLiking }: props) => {
+  // Context
   const { isAuthenticated, user } = useAuth();
+
+  // Calculated variables
   let rating = 0;
   let like = false;
   if (isAuthenticated) {
@@ -23,6 +28,7 @@ const PlaceCard = ({ place, onRating, onLiking }: props) => {
     like = place.likes.some((like) => like.id_user === user?.id);
     if (rating_item) rating = rating_item.rating || 0;
   }
+  // Handles
   const handleOnRating = (rating: number) => {
     if (!isAuthenticated || !user) {
       toast.warning("Es necesario inicar sesión para realizar esa acción");

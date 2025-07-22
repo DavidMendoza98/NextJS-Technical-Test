@@ -6,13 +6,15 @@ import { toast } from "sonner";
 import { Protected } from "@/components/protected_components";
 
 const Account = () => {
+  // import context and router
   const { user, logout } = useAuth();
   const router = useRouter();
-
+  // all handle funtions
   const handleLogout = () => {
     logout();
     toast.success("Sesión cerrada");
   };
+
   const goToActivityHistory = () => {
     router.push("/activity");
   };

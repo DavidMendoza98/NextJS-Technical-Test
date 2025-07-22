@@ -4,11 +4,16 @@ import { authScreenMode } from "@/types/auth_screen_mode.interface";
 import AuthToggle from "./_components/toggle";
 import LoginForm from "./_components/login";
 import RegisterForm from "./_components/register";
+
 export default function Page() {
+  // States
   const [mode, setMode] = useState<authScreenMode>("login");
+
+  // Handles
   const handleModeToggle = (mode: authScreenMode) => {
     setMode(mode);
   };
+
   return (
     <>
       <AuthToggle mode={mode} onChange={handleModeToggle} />

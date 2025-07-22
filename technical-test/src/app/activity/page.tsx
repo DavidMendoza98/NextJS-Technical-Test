@@ -4,13 +4,19 @@ import { Protected } from "@/components/protected_components";
 import { useEffect, useState } from "react";
 import { Log } from "@/types/log.interface";
 import Spinner from "@/components/spinner";
+
 const Activity = () => {
+  // Import context
   const { user, token } = useAuth();
+  // States
   const [logs, setLogs] = useState<Log[]>([]);
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    if (!user) return;
 
+  // Get data from API, get one time only on the mount.
+  useEffect(() => {
+    // Despite this low <Protected/> that checks the auth context, it is validated to avoid errors.
+    if (!user) return;
+    // To obtain data, fetch is used because it is the only area that needs this resource.
     const fetchLogs = async () => {
       try {
         const response = await fetch(
@@ -41,7 +47,6 @@ const Activity = () => {
     <Protected>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 mt-6">
-          {/* Header */}
           <div className="p-6 border-b border-gray-200 bg-gradient-to-r from-gray-50 to-white">
             <h2 className="text-xl font-semibold text-gray-900">
               Registro de Actividad
@@ -51,7 +56,6 @@ const Activity = () => {
             </p>
           </div>
 
-          {/* Tabla */}
           <div className="overflow-x-auto">
             <table className="min-w-full">
               <thead className="bg-gray-50">

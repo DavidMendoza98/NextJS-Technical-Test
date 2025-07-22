@@ -8,8 +8,12 @@ import { FieldValues, useForm } from "react-hook-form";
 import { Eye, EyeOff, CircleAlert } from "lucide-react";
 
 const LoginForm = () => {
+  // Context
   const { login } = useAuth();
+  // Router
   const router = useRouter();
+
+  // Form
   const {
     register,
     handleSubmit,
@@ -17,6 +21,10 @@ const LoginForm = () => {
     reset,
   } = useForm();
 
+  // States
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Handles
   const onSubmit = async (data: FieldValues) => {
     const toastId = toast.loading("Procesando...");
 
@@ -47,8 +55,6 @@ const LoginForm = () => {
       toast.error("Error " + error, { id: toastId });
     }
   };
-  const [showPassword, setShowPassword] = useState(false);
-
   return (
     <div className="w-full max-w-md mx-auto p-6 bg-white border-1 border-neutral-300 dark:bg-transparent dark:text-white  min-h-screen sm:min-h-0 rounded-lg mt-2 text-neutral-900 ">
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-1">

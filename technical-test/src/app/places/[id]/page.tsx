@@ -6,15 +6,22 @@ import { use, useEffect, useState } from "react";
 import { City } from "@/types/city.interface";
 import PlaceCard from "./_components/card";
 import { toast } from "sonner";
+
+// The type was defined in the same component file given its exclusive use.
 interface Props {
   params: Promise<{ id: string }>;
 }
 const Places = ({ params }: Props) => {
+  // Context
   const { isAuthenticated, token } = useAuth();
+
+  // Params
   const { id } = use(params);
+  // States
   const [places, setPlaces] = useState<Place[]>([]);
   const [city, setCity] = useState<City>();
   const [loading, setLoading] = useState(true);
+  // Handles
   const fetchPlaces = async () => {
     try {
       const response = await fetch(
@@ -63,6 +70,7 @@ const Places = ({ params }: Props) => {
         toast.error(result.message || "Ocurrió un error");
         return;
       }
+      toast.success("Like!");
       fetchPlaces();
     } catch (err) {
       console.error(err);
@@ -100,6 +108,7 @@ const Places = ({ params }: Props) => {
         toast.error(result.message || "Ocurrió un error");
         return;
       }
+      toast.success("Rating!");
       fetchPlaces();
     } catch (err) {
       console.error(err);
