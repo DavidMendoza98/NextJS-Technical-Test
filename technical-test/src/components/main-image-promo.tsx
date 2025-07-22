@@ -17,7 +17,7 @@ const MainImagePromotional = () => {
           <div className="absolute bottom-6 w-full flex justify-center -translate-y-10">
             <div className="h-64 w-auto relative">
               <Image
-                src="/conoce_honduras_2.webp"
+                src="/conoce_honduras_base.webp"
                 alt="Logo"
                 width={14337}
                 height={7658}

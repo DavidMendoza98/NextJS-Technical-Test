@@ -34,9 +34,9 @@ const Info = () => {
   return (
     <>
       <section className=" py-16 px-4 text-center">
-        <h2 className="text-3xl font-bold text-sky-600 dark:text-white mb-4">
+        <h1 className="text-3xl font-bold text-sky-600 dark:text-white mb-4">
           ¿Por qué conocer Honduras?
-        </h2>
+        </h1>
         <p className="max-w-2xl mx-auto text-lg text-gray-700 dark:text-white">
           Desde playas paradisíacas hasta tesoros mayas escondidos entre la
           selva, Honduras es un país lleno de magia, historia y aventura. Con

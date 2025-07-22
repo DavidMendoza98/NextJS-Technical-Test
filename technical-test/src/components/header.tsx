@@ -30,7 +30,7 @@ const Header = () => {
             {isAuthenticated ? (
               <Link
                 href="/account"
-                className="flex items-center justify-center gap-1 bg-transparent text-neutral-800 dark:text-white font-semibold px-4 py-2 rounded-md shadow "
+                className="flex items-center justify-center gap-1 bg-transparent text-neutral-800 font-semibold px-4 py-2 rounded-md shadow "
               >
                 <CircleUserRound size={20} /> {user?.name}
               </Link>
