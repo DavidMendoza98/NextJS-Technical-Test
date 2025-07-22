@@ -1,0 +1,1 @@
+export type authScreenMode = "login" | "register";
