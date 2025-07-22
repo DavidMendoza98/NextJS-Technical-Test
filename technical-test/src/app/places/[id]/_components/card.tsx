@@ -21,7 +21,7 @@ const PlaceCard = ({ place, onRating, onLiking }: props) => {
       (rating) => rating.id_user === user?.id
     );
     like = place.likes.some((like) => like.id_user === user?.id);
-    rating = rating_item.rating || 0;
+    if (rating_item) rating = rating_item.rating || 0;
   }
   const handleOnRating = (rating: number) => {
     if (!isAuthenticated || !user) {
